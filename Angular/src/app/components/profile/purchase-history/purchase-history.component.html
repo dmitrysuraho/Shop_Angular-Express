@@ -1,0 +1,22 @@
+<div class="history">
+  <ng-container *ngIf="historyOrdersLength == 0 || !historyOrdersLength; else clearHistoryButton">
+    <div class="products-list-not-found">
+      <h3>NO HISTORY</h3>
+    </div>
+  </ng-container>
+  <ng-template #clearHistoryButton>
+    <div
+      class="history-clear"
+      (click)="clearHistory()">Clear history
+    </div>
+  </ng-template>
+  <app-history-order
+    *ngFor="let order of onePageHistoryOrders$ | async"
+    [order]="order"></app-history-order>
+  <app-pagination
+    *ngIf="historyOrdersLength > 3"
+    (onChangePage)="onChangePage($event)"
+    [currentPage]="currentPage"
+    [productLength]="historyOrdersLength"
+    [countProductsOnPage]="3"></app-pagination>
+</div>

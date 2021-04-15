@@ -1,0 +1,96 @@
+<div class="filters">
+  <div class="filters-categories">
+    <div class="filters-categories-title">Categories</div>
+    <div class="filters-categories-category">
+      <div class="filters-clothing">
+        <div class="filters-clothing-title">
+          <a (click)="isOpenClothingMenu = !isOpenClothingMenu">CLOTHING</a>
+        </div>
+        <div class="filters-clothing-menu" [ngClass]="{'close-menu': isOpenClothingMenu}">
+          <div *ngFor="let cl of clothing$ | async">
+            <a
+              [routerLink]="Routing.SHOP"
+              [queryParams]="{'type': 'clothing', 'category': cl.category | lowercase}">{{ cl.category }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="filters-shoes">
+        <div class="filters-shoes-title">
+          <a (click)="isOpenShoesMenu = !isOpenShoesMenu">SHOES</a>
+        </div>
+        <div
+          class="filters-shoes-menu"
+          [ngClass]="{'close-menu': isOpenShoesMenu}">
+          <div *ngFor="let sh of shoes$ | async">
+            <a
+              [routerLink]="Routing.SHOP"
+              [queryParams]="{'type': 'shoes', 'category': sh.category | lowercase}">{{ sh.category }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="filters-accessories">
+        <div class="filters-accessories-title">
+          <a (click)="isOpenAccessoriesMenu = !isOpenAccessoriesMenu">ACCESSORIES</a>
+        </div>
+        <div
+          class="filters-accessories-menu"
+          [ngClass]="{'close-menu': isOpenAccessoriesMenu}">
+          <div *ngFor="let acc of accessories$ | async">
+            <a
+              [routerLink]="Routing.SHOP"
+              [queryParams]="{'type': 'accessories', 'category': acc.category | lowercase}">{{ acc.category }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filters-filter-by">
+    <div class="filters-filter-by-title">Filter By</div>
+    <div class="filters-filter-by-filter">
+      <div class="filters-filter-by-price">
+        <div>PRICE</div>
+        <div class="filters-filter-by-price-menu">
+          <div class="filters-price-from">
+            <label>from: </label>
+            <input
+              #fromInput
+              (change)="onChangeFromPrice()"
+              [(ngModel)]="fromPrice"
+              type="range"
+              [min]="minPrice"
+              [max]="maxPrice"
+              step="1">
+          </div>
+          <div class="filters-price-to">
+            <label>to: </label>
+            <input
+              #toInput
+              (change)="onChangeToPrice()"
+              [(ngModel)]="toPrice"
+              type="range"
+              [min]="minPrice"
+              [max]="maxPrice"
+              step="1">
+          </div>
+          <div class="filters-price-range">
+            range: {{ fromPrice | currency: '$': 'symbol':'0.0-0'}} - {{ toPrice | currency: '$': 'symbol':'0.0-0' }}
+          </div>
+        </div>
+      </div>
+      <div class="filters-filter-by-brands">
+        <div>BRANDS</div>
+        <div class="filters-filter-by-brands-menu">
+          <div *ngFor="let br of brands$ | async">
+            <a (click)="addBrandQueryParam(br.brand.toLowerCase())">{{ br.brand }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="filters-reset"
+      [routerLink]="Routing.SHOP"
+      (click)="resetFilters()">
+      Reset filters
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+input {
+  outline: none;
+  height: 30px;
+  font-size: 18px;
+  border: 1px solid gray;
+  transition: border-bottom-color, color 0.3s ease-in-out;
+
+  &:focus {
+    border: 1px solid #0315FF;
+    color: #0315FF;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  min-height: 200px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 1070px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 540px) {
+    width: 300px;
+    padding: 5px;
+  }
+
+  .card-number {
+    input {
+      width: 280px;
+    }
+  }
+
+  .card-date-ccv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-month {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .card-year {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .card-ccv {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .card-img {
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 50px;
+      }
+    }
+  }
+
+  .card-name {
+    input {
+      width: 280px;
+    }
+  }
+
+  .card-successfully-saved {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+  .card-successfully-saved {
+    font-weight: bold;
+    color: red;
+  }
+
+  .card-save-changes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 5px 0;
+
+    button {
+      height: 30px;
+      width: 110px;
+      color: white;
+      background-color: #0315FF;
+      border: none;
+      outline: none;
+      transition: background-color 0.3s ease-in-out;
+      font-size: 15px;
+
+      &:hover {
+        background-color: #DC0345;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .card-error-field {
+    color: #DC0345;
+    word-wrap: normal;
+    font-size: 13px;
+  }
+}
+
+/////////
+
+.error-red-border {
+  border: solid 1px #DC0345 !important;
+  color: #DC0345 !important;
+}
+
+.card-disable-button {
+  background-color: gray !important;
+}

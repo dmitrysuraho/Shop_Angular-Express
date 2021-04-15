@@ -1,0 +1,31 @@
+.div-styles() {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.pagination {
+  display: flex;
+
+  .pagination-back-page {
+    .div-styles();
+  }
+
+  .pagination-current-page {
+    .div-styles();
+    color: #DC0345;
+    font-size: 20px;
+  }
+
+  .pagination-forward-page {
+    .div-styles();
+  }
+}

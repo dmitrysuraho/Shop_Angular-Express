@@ -1,0 +1,50 @@
+.history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 1070px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 540px) {
+    width: 300px;
+    padding: 5px;
+  }
+
+  app-history-order {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .products-list-not-found {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: #DC0345;
+  }
+
+  .history-clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 110px;
+    color: white;
+    background-color: #0315FF;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #DC0345;
+      cursor: pointer;
+    }
+  }
+
+  app-pagination {
+    margin: 20px 0 20px 0;
+  }
+}

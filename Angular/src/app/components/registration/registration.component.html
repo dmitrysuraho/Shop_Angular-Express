@@ -1,0 +1,36 @@
+<div class="registration">
+  <ng-container *ngIf="!isUser">
+    <div class="registration-error-user">{{ errorMessage }}</div>
+  </ng-container>
+  <div class="registration-title">Registration</div>
+  <form
+    class="registration-form"
+    [formGroup]="registrationForm"
+    (ngSubmit)="registration()">
+    <div class="registration-form-group"
+         *ngFor="let input of inputs">
+      <input
+        [ngClass]="{'error-red-border': registrationForm.controls[input.formControl]?.invalid && registrationForm.controls[input.formControl]?.touched}"
+        [type]="input.type"
+        [formControlName]="input.formControl"
+        [placeholder]="input.field"/>
+      <div class="registration-error">
+        <ng-container *ngIf="registrationForm.controls[input.formControl]?.invalid && registrationForm.controls[input.formControl]?.touched">
+          <div class="registration-error-field">{{ errorFields.get(input.formControl) }}</div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="registration-form-group">
+      <button
+        [disabled]="registrationForm?.invalid"
+        [ngClass]="{'registration-disable-button': registrationForm?.invalid}">Register
+      </button>
+      <ng-container *ngIf="loading">
+        <img
+          style="margin-left: 5px"
+          src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+      </ng-container>
+      <a [routerLink]="Routing.AUTHORIZATION">Cancel</a>
+    </div>
+  </form>
+</div>

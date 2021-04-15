@@ -1,0 +1,312 @@
+.button-styles(@height, @width, @font-weight: normal, @margin-top: 0) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0315FF;
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 12px;
+  text-align: center;
+  height: @height;
+  width: @width;
+  font-weight: @font-weight;
+  margin-top: @margin-top;
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    background-color: #DC0345;
+  }
+}
+
+.popup-styles(@img-margin-bottom, @img-margin-left) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+
+  .popup-change-img {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    div {
+      .button-styles(30px, 80px);
+      margin-top: 20px;
+      margin-right: 20px;
+      font-size: 15px;
+      border: 1px solid white;
+    }
+  }
+}
+
+hr {
+  background-color: lightgrey;
+  border: none;
+  height: 1px;
+  margin: 10px 0;
+}
+
+.ordering-container {
+  position: relative;
+
+  .popup-change-address {
+
+    app-delivery-address {
+      z-index: 3;
+      margin-bottom: 100px;
+    }
+
+    .popup-styles(340px, 590px);
+    @media screen and (max-width: 1070px) {
+      .popup-styles(340px, 490px);
+    }
+    @media screen and (max-width: 540px) {
+      .popup-styles(345px, 295px);
+    }
+  }
+
+  .popup-change-card {
+
+    app-payment-card {
+      z-index: 3;
+      margin-bottom: 120px;
+    }
+
+    .popup-styles(200px, 590px);
+    @media screen and (max-width: 1070px) {
+      .popup-styles(200px, 490px);
+    }
+    @media screen and (max-width: 540px) {
+      .popup-styles(205px, 295px);
+    }
+  }
+
+  .ordering-title {
+    background-image: url("src/assets/images/shop-background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 140px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+
+    div {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .ordering {
+    min-height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    @media screen and (max-width: 750px) {
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .ordering-data {
+      width: 700px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+      @media screen and (max-width: 1070px) {
+        width: 400px;
+      }
+      @media screen and (max-width: 450px) {
+        width: 300px;
+      }
+
+      .ordering-data-address {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        @media screen and (max-width: 750px) {
+          justify-content: center;
+          align-items: center;
+        }
+
+        .ordering-data-address-title {
+          padding: 10px 10px 5px 10px;
+          font-weight: bold;
+          font-size: 20px;
+        }
+
+        .ordering-data-address-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 5px 10px 10px 10px;
+          word-wrap: break-word;
+          @media screen and (max-width: 750px) {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          div {
+            @media screen and (max-width: 750px) {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            }
+          }
+
+          .ordering-data-address-change-button {
+            .button-styles(30px, 100px);
+            @media screen and (max-width: 750px) {
+              margin-top: 10px;
+            }
+          }
+        }
+
+        .ordering-add-address {
+          margin: 5px 10px 10px 10px;
+          .button-styles(30px, 100px);
+        }
+      }
+
+      .ordering-data-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        @media screen and (max-width: 750px) {
+          justify-content: center;
+          align-items: center;
+        }
+
+        .ordering-data-card-title {
+          font-weight: bold;
+          font-size: 20px;
+          padding: 10px 10px 5px 10px;
+        }
+
+        .ordering-data-card-info {
+          font-size: 18px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 5px 10px 10px 10px;
+          @media screen and (max-width: 750px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          div {
+            @media screen and (max-width: 750px) {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            }
+          }
+
+          .ordering-data-card-change-button {
+            .button-styles(30px, 100px);
+            @media screen and (max-width: 750px) {
+              margin-top: 10px;
+            }
+          }
+        }
+
+        .ordering-add-card {
+          margin: 5px 10px 10px 10px;
+          .button-styles(30px, 100px);
+        }
+      }
+    }
+
+    .ordering-buy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 300px;
+      margin-left: 15px;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      @media screen and (max-width: 1070px) {
+        width: 280px;
+      }
+      @media screen and (max-width: 750px) {
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+
+      .ordering-buy-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .ordering-buy-product {
+        display: flex;
+        justify-content: space-between;
+        word-wrap: break-word;
+
+        .ordering-buy-product-name {
+          font-weight: bold;
+        }
+
+        .ordering-buy-product-price {
+          display: flex;
+          align-items: flex-end;
+          font-weight: bold;
+          color: red;
+        }
+      }
+
+      .ordering-buy-total {
+        display: flex;
+        justify-content: space-between;
+
+        .ordering-buy-total-title {
+          font-weight: bold;
+        }
+
+        .ordering-buy-total-price {
+          font-weight: bold;
+          color: red;
+        }
+      }
+
+      .ordering-buy-button {
+        display: flex;
+        justify-content: center;
+
+        button {
+          .button-styles(40px, 100%, bold, 15px);
+        }
+      }
+    }
+  }
+}
+
+//////
+
+.no-address-card {
+  background-color: gray !important;
+}

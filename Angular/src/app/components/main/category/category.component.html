@@ -1,0 +1,26 @@
+<div class="category">
+  <div class="category-blocks category-clothing">
+    <div>
+      <a
+        [routerLink]="Routing.SHOP"
+        [queryParams]="{'type':'clothing', 'category':'all'}"
+        (click)="toUpPage()">CLOTHING</a>
+    </div>
+  </div>
+  <div class="category-blocks category-shoes">
+    <div>
+      <a
+        [routerLink]="Routing.SHOP"
+        [queryParams]="{'type':'shoes', 'category':'all'}"
+        (click)="toUpPage()">SHOES</a>
+    </div>
+  </div>
+  <div class="category-blocks category-accessories">
+    <div>
+      <a
+        [routerLink]="Routing.SHOP"
+        [queryParams]="{'type':'accessories', 'category':'all'}"
+        (click)="toUpPage()">ACCESSORIES</a>
+    </div>
+  </div>
+</div>

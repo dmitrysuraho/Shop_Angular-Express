@@ -1,0 +1,38 @@
+<div class="profile-title">
+  <div>
+    <h1>{{ title }}</h1>
+  </div>
+</div>
+<div class="profile">
+  <div class="profile-menu">
+    <div
+      class="profile-menu-personal"
+      [ngClass]="{'bg-color': title === 'Personal data'}"
+      [routerLink]="Routing.PERSONAL_DATA">
+      <div>Personal data</div>
+    </div>
+    <div
+      class="profile-menu-address"
+      [ngClass]="{'bg-color': title === 'Delivery address'}"
+      [routerLink]="Routing.DELIVERY_ADDRESS">
+      <div>Delivery address</div>
+    </div>
+    <div
+      class="profile-menu-card"
+      [ngClass]="{'bg-color': title === 'Payment card'}"
+      [routerLink]="Routing.PAYMENT_CARD">
+      <div>Payment card</div>
+    </div>
+    <div
+      class="profile-menu-history"
+      [ngClass]="{'bg-color': title === 'Purchase history'}"
+      [routerLink]="Routing.PURCHASE_HISTORY">
+      <div>Purchase history</div>
+    </div>
+    <div
+      class="profile-logout"
+      (click)="logOut()">Logout
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

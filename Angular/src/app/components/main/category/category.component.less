@@ -1,0 +1,74 @@
+a {
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+    color: #0315FF;
+  }
+}
+
+.back-image(@url) {
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  transition: color 0.3s ease-in-out;
+  color: black;
+  div {
+    background: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1000px) {
+      font-size: 20px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    width: 290px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 210px;
+    height: 180px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 500px) {
+    margin: 0;
+  }
+}
+
+.category {
+  padding: 65px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  @media screen and (max-width: 500px) {
+    padding: 65px 15px;
+  }
+
+  .category-blocks {
+    width: 350px;
+    height: 240px;
+    margin: 0 15px;
+  }
+
+  .category-clothing {
+    .back-image("src/assets/images/clothing.jpg");
+  }
+
+  .category-shoes {
+    .back-image("src/assets/images/shoes.jpg");
+  }
+
+  .category-accessories {
+    .back-image("src/assets/images/accessories.jpg");
+  }
+}

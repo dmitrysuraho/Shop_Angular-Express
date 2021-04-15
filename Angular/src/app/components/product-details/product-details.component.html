@@ -1,0 +1,34 @@
+<div class="product-details">
+  <div
+    class="product-details-img"
+    [style.background-image]="urlPicture?'url(' + urlPicture + ')':'none'"></div>
+  <div class="product-details-info">
+    <div class="product-details-brand">{{ product?.brand | uppercase }}</div>
+    <div class="product-details-name">{{ product?.name }}</div>
+    <div class="product-details-price">{{ product?.price | currency: '$' }}</div>
+    <div class="product-details-description">{{ product?.description }}</div>
+    <div class="product-details-size-color">
+      <!--      <div class="product-details-size">-->
+      <!--        <select name="size">-->
+      <!--          <option value="XL">SIZE: XL</option>-->
+      <!--          <option value="X">SIZE: X</option>-->
+      <!--          <option value="M">SIZE: M</option>-->
+      <!--          <option value="S">SIZE: S</option>-->
+      <!--        </select>-->
+      <!--      </div>-->
+      <!--      <div class="product-details-color">-->
+      <!--        <select name="color">-->
+      <!--          <option value="BLACK">COLOR: BLACK</option>-->
+      <!--          <option value="WHITE">COLOR: WHITE</option>-->
+      <!--          <option value="RED">COLOR: RED</option>-->
+      <!--          <option value="PURPLE">COLOR: PURPLE</option>-->
+      <!--        </select>-->
+      <!--      </div>-->
+    </div>
+    <div class="product-details-button">
+      <div
+        [ngClass]="{'red-back-ground-button': button === 'ADDED'}"
+        (click)="addToCart()">{{ button }}</div>
+    </div>
+  </div>
+</div>

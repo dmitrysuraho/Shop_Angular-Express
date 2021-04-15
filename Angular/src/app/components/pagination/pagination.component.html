@@ -1,0 +1,19 @@
+<div class="pagination">
+  <div class="pagination-back-page">
+    <img
+      height="15px"
+      width="15px"
+      (click)="backPage()"
+      src="assets/images/arrow-left.svg"/>
+  </div>
+  <div class="pagination-current-page">
+    <div>{{ currentPage }}</div>
+  </div>
+  <div class="pagination-forward-page">
+    <img
+      height="15px"
+      width="15px"
+      (click)="forwardPage()"
+      src="assets/images/arrow-right.svg"/>
+  </div>
+</div>

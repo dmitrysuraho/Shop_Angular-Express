@@ -1,0 +1,15 @@
+<div class="new-collection">
+  <div class="new-collection-container">
+    <div class="new-collection-name">
+      <strong>asos</strong><br/>
+      <span>New Collection</span>
+    </div>
+    <div
+      class="new-collection-button"
+      [routerLink]="Routing.SHOP"
+      [queryParams]="{brand: 'asos'}"
+      (click)="toUpPage()">
+      <strong>VIEW COLLECTION</strong>
+    </div>
+  </div>
+</div>

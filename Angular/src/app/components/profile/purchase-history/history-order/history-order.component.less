@@ -1,0 +1,43 @@
+.history-order {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .history-order-date-total {
+    display: flex;
+    justify-content: space-between;
+
+    .history-order-total-price {
+      color: red;
+    }
+  }
+
+  hr {
+    margin: 10px 0;
+    height: 1px;
+    background-color: lightgrey;
+    border: none;
+  }
+
+  .history-order-products {
+    display: flex;
+    flex-direction: column;
+
+    .history-order-product {
+      display: flex;
+      justify-content: center;
+
+      .history-order-product-name {
+        word-wrap: break-word;
+        margin-right: 5px;
+      }
+
+      .history-order-product-price {
+        color: red;
+        margin-left: 5px;
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  }
+}

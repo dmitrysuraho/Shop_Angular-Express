@@ -1,0 +1,70 @@
+<div class="card">
+  <form
+    class="card-form"
+    [formGroup]="cardForm"
+    (ngSubmit)="saveCard()">
+    <div class="card-number">
+      <input
+        (input)="changeInput('cardNumber')"
+        [ngClass]="{'error-red-border': cardForm.controls['cardNumber']?.invalid && cardForm.controls['cardNumber']?.touched}"
+        type="text" maxlength="16"
+        placeholder="Card number"
+        formControlName="cardNumber"/>
+    </div>
+    <div class="card-date-ccv">
+      <div class="card-month">
+        <input
+          (input)="changeInput('cardMonth')"
+          [ngClass]="{'error-red-border': cardForm.controls['cardMonth']?.invalid && cardForm.controls['cardMonth']?.touched}"
+          type="text"
+          maxlength="2"
+          placeholder="MM"
+          formControlName="cardMonth"/>
+      </div>
+      <div class="card-year">
+        <input
+          (input)="changeInput('cardYear')"
+          [ngClass]="{'error-red-border': cardForm.controls['cardYear']?.invalid && cardForm.controls['cardYear']?.touched}"
+          type="text"
+          maxlength="2"
+          placeholder="YY"
+          formControlName="cardYear"/>
+      </div>
+      <div class="card-ccv">
+        <input
+          (input)="changeInput('cardCCV')"
+          [ngClass]="{'error-red-border': cardForm.controls['cardCCV']?.invalid && cardForm.controls['cardCCV']?.touched}"
+          type="password"
+          maxlength="3"
+          placeholder="CCV"
+          formControlName="cardCCV"/>
+      </div>
+      <div class="card-img">
+        <img src="assets/images/payment-card.svg"/>
+      </div>
+    </div>
+    <div class="card-name">
+      <input
+        (input)="changeInput('cardName')"
+        [ngClass]="{'error-red-border': cardForm.controls['cardName']?.invalid && cardForm.controls['cardName']?.touched}"
+        type="text"
+        placeholder="Name on the card"
+        formControlName="cardName"/>
+    </div>
+    <ng-container *ngIf="isSaved">
+      <div class="card-successfully-saved">Successfully saved</div>
+    </ng-container>
+    <div class="card-save-changes">
+      <button
+        [disabled]="cardForm?.invalid || !isChangeInput"
+        [ngClass]="{'card-disable-button': cardForm?.invalid || !isChangeInput}">Save changes
+      </button>
+    </div>
+  </form>
+  <ng-container *ngFor="let key of errorFields.keys()">
+    <div class="card-error-field"
+         *ngIf="cardForm.controls[key]?.invalid && cardForm.controls[key]?.touched">
+      {{ errorFields.get(key) }}
+    </div>
+  </ng-container>
+</div>

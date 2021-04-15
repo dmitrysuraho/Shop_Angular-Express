@@ -1,0 +1,36 @@
+<div class="authorization">
+  <ng-container *ngIf="isUser">
+    <div class="authorization-error-user">{{ errorMessage }}</div>
+  </ng-container>
+  <div class="authorization-title">Authorization</div>
+  <form class="authorization-form"
+        [formGroup]="authorizationForm"
+        (ngSubmit)="authorization()">
+    <div class="authorization-form-group"
+         *ngFor="let input of inputs">
+      <input
+        [ngClass]="{'error-red-border': authorizationForm.controls[input.formControl]?.invalid && authorizationForm.controls[input.formControl]?.touched}"
+        [type]="input.type"
+        [formControlName]="input.formControl"
+        [placeholder]="input.field"/>
+      <div class="authorization-error">
+        <ng-container
+          *ngIf="authorizationForm.controls[input.formControl]?.invalid && authorizationForm.controls[input.formControl]?.touched">
+          <div class="authorization-error-field">{{ errorFields.get(input.formControl) }}</div>
+      </ng-container>
+      </div>
+    </div>
+    <div class="authorization-form-group">
+      <button
+        [disabled]="authorizationForm?.invalid"
+        [ngClass]="{'authorization-disable-button': authorizationForm?.invalid}">Login
+      </button>
+      <ng-container *ngIf="loading">
+        <img style="margin-left: 5px"
+             src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+      </ng-container>
+      <a [routerLink]="Routing.REGISTRATION">Register</a>
+      <a [routerLink]="Routing.MAIN">Main page</a>
+    </div>
+  </form>
+</div>

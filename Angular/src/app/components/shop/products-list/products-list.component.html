@@ -1,0 +1,33 @@
+<div class="products-list">
+  <div class="products-list-found-sort">
+    <div class="products-list-found"><span>{{ productLength }}</span> PRODUCTS FOUND</div>
+    <div class="products-list-sort">SORTED BY:
+      <div
+        [ngClass]="{'sort-buttons-click': isSortPriceAsc}"
+        (click)="sortPriceAsc()">PRICE &#8593;
+      </div>
+      <div
+        [ngClass]="{'sort-buttons-click': isSortPriceDesc}"
+        (click)="sortPriceDesc()">PRICE &#8595;
+      </div>
+    </div>
+  </div>
+  <div class="products-list-products">
+    <div
+      class="products-list-product"
+      *ngFor="let product of onePageProducts$ | async">
+      <app-product [product]="product"></app-product>
+    </div>
+    <ng-container *ngIf="productLength == 0">
+      <div class="products-list-not-found">
+        <h3>NO PRODUCTS</h3>
+      </div>
+    </ng-container>
+  </div>
+  <app-pagination
+    *ngIf="productLength > 6"
+    (onChangePage)="onChangePage($event)"
+    [currentPage]="currentPage"
+    [productLength]="productLength"
+    [countProductsOnPage]="6"></app-pagination>
+</div>

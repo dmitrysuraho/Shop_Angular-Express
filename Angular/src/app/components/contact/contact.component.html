@@ -1,0 +1,32 @@
+<div class="contact">
+  <div
+    class="contact-map"
+    #mapWrapper>
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom">
+      <agm-marker
+        [latitude]="lat"
+        [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div>
+  <div class="contact-info">
+    <h2>How to Find Us</h2>
+    <p>Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec
+      maximus est sollicitudin.</p>
+    <div>
+      <p class="contact-address">
+        <span>ADDRESS:</span>
+        B-r Grechko, Borisov, Belarus
+      </p>
+      <p class="contact-phone">
+        <span>TELEPHONE:</span>
+        +375 44 734-71-56
+      </p>
+      <p class="contact-email">
+        <a href="mailto:dmitriysurago@mail.ru">dmitriysurago@mail.ru</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="personal-data">
+  <form
+    class="personal-data-form"
+    [formGroup]="personalDataForm"
+    (ngSubmit)="savePersonalData()">
+    <div class="personal-data-form-group"
+         *ngFor="let input of inputs">
+      <label>{{ input.field }}</label>
+      <input
+        (input)="changeInput(input.formControl)"
+        [ngClass]="{'error-red-border': personalDataForm.controls[input.formControl]?.invalid && personalDataForm.controls[input.formControl]?.touched}"
+        [type]="input.type"
+        [formControlName]="input.formControl"/>
+      <div class="personal-data-error">
+        <ng-container
+          *ngIf="personalDataForm.controls[input.formControl]?.invalid && personalDataForm.controls[input.formControl]?.touched">
+          <div class="personal-data-error-field">{{ errorFields.get(input.formControl) }}</div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="isSaved">
+      <div class="personal-data-successfully-saved">Successfully saved</div>
+    </ng-container>
+    <div class="personal-data-form-group">
+      <button
+        [disabled]="personalDataForm?.invalid || !isChangeInput"
+        [ngClass]="{'personal-data-disable-button': personalDataForm?.invalid || !isChangeInput}">Save changes
+      </button>
+    </div>
+  </form>
+</div>

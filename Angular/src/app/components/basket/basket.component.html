@@ -1,0 +1,38 @@
+<div class="basket-title">
+  <div>
+    <h1>Basket</h1>
+  </div>
+</div>
+<div class="basket">
+  <div class="basket-products">
+    <ng-container *ngIf="basketProductsLength == 0">
+      <div class="products-list-not-found">
+        <h3>NO PRODUCTS</h3>
+      </div>
+    </ng-container>
+    <app-basket-product
+      (onDeleteFromCart)="refreshProductsInCart($event)"
+      *ngFor="let product of onePageBasketProducts$ | async"
+      [product]="product"></app-basket-product>
+    <app-pagination
+      *ngIf="basketProductsLength > 5"
+      (onChangePage)="onChangePage($event)"
+      [currentPage]="currentPage"
+      [productLength]="basketProductsLength"
+      [countProductsOnPage]="5"></app-pagination>
+  </div>
+  <div class="basket-buy">
+    <div class="basket-buy-title">SUMMARY</div>
+    <div class="basket-buy-total">
+      <div class="basket-buy-total-title">TOTAL:</div>
+      <div class="basket-buy-total-price">{{ totalPrice | currency: '$' }}</div>
+    </div>
+    <div class="basket-buy-button">
+      <button
+        (click)="placeOrder()"
+        [disabled]="basketProductsLength == 0"
+        [ngClass]="{'no-items-basket':basketProductsLength == 0}">PLACE ORDER
+      </button>
+    </div>
+  </div>
+</div>

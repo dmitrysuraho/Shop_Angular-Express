@@ -1,0 +1,217 @@
+.filters-styles() {
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 790px) {
+    align-items: center;
+  }
+}
+
+a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filters {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 790px) {
+    flex-direction: row;
+  }
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
+
+  .filters-categories {
+    .filters-styles();
+    @media screen and (max-width: 790px) {
+      margin-right: 20px;
+    }
+    @media screen and (max-width: 400px) {
+      margin-right: 0;
+    }
+  }
+
+  .filters-categories-title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .filters-categories-category {
+    margin-top: 30px;
+    .filters-styles();
+    @media screen and (max-width: 790px) {
+      margin-top: 10px;
+    }
+
+    .filters-clothing {
+      .filters-styles();
+
+      .filters-clothing-title {
+        margin-bottom: 5px;
+      }
+
+      .filters-clothing-menu {
+        .filters-styles();
+        margin-left: 15px;
+        @media screen and (max-width: 790px) {
+          margin-left: 0;
+        }
+        display: none;
+
+        a {
+          color: gray;
+
+          &:hover {
+            color: #0315FF;
+          }
+        }
+      }
+    }
+
+    .filters-shoes {
+      .filters-styles();
+      margin-top: 5px;
+
+      .filters-shoes-title {
+        margin-bottom: 5px;
+      }
+
+      .filters-shoes-menu {
+        .filters-styles();
+        margin-left: 15px;
+        @media screen and (max-width: 790px) {
+          margin-left: 0;
+        }
+        display: none;
+
+        a {
+          color: gray;
+
+          &:hover {
+            color: #0315FF;
+          }
+        }
+      }
+    }
+
+    .filters-accessories {
+      .filters-styles();
+      margin-top: 5px;
+
+      .filters-accessories-title {
+        margin-bottom: 5px;
+      }
+
+      .filters-accessories-menu {
+        .filters-styles();
+        margin-left: 15px;
+        @media screen and (max-width: 790px) {
+          margin-left: 0;
+        }
+        display: none;
+
+        a {
+          color: gray;
+
+          &:hover {
+            color: #0315FF;
+          }
+        }
+      }
+    }
+  }
+
+  .filters-filter-by {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 790px) {
+      margin-top: 0;
+      margin-left: 20px;
+      align-items: center;
+    }
+    @media screen and (max-width: 400px) {
+      margin-top: 15px;
+    }
+    @media screen and (max-width: 400px) {
+      margin-left: 0;
+    }
+
+    .filters-filter-by-title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .filters-filter-by-filter {
+      margin-top: 30px;
+      @media screen and (max-width: 790px) {
+        margin-top: 10px;
+      }
+      .filters-styles();
+
+      .filters-filter-by-price {
+        .filters-styles();
+
+        .filters-filter-by-price-menu {
+          display: flex;
+          margin-top: 5px;
+          flex-direction: column;
+          align-items: flex-end;
+
+          .filters-price-from {
+          }
+
+          .filters-price-to {
+            margin-left: 10px;
+          }
+
+          .filters-price-range {
+            color: #0315FF;
+          }
+        }
+      }
+
+      .filters-filter-by-brands {
+        margin-top: 30px;
+        @media screen and (max-width: 790px) {
+          margin-top: 10px;
+        }
+        .filters-styles();
+
+        .filters-filter-by-brands-menu {
+          .filters-styles();
+
+          a {
+            color: gray;
+
+            &:hover {
+              color: #0315FF;
+            }
+          }
+        }
+      }
+    }
+
+    .filters-reset {
+      background-color: #0315FF;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #DC0345;
+      }
+    }
+  }
+}
+
+//
+
+.close-menu {
+  display: flex !important;
+}

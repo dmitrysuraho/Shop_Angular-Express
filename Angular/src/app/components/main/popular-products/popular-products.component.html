@@ -1,0 +1,8 @@
+<div class="popular-products">
+  <div class="popular-products-title">Popular Products</div>
+  <div class="popular-products-products">
+    <app-product
+      *ngFor="let product of popularProducts$ | async"
+      [product]="product"></app-product>
+  </div>
+</div>

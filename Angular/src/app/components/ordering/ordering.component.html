@@ -1,0 +1,89 @@
+<div class="ordering-container">
+  <ng-container *ngIf="isChangeAddress">
+    <div class="popup-change-address">
+      <div class="popup-change-img">
+        <div (click)="closeChangeAddress()">Close</div>
+      </div>
+      <app-delivery-address (saveAddressChanges)="saveAddressChanges()"></app-delivery-address>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isChangeCard">
+    <div class="popup-change-card">
+      <div class="popup-change-img">
+        <div (click)="closeChangeCard()">Close</div>
+      </div>
+      <app-payment-card (saveCardChanges)="saveCardChanges()"></app-payment-card>
+    </div>
+  </ng-container>
+  <div class="ordering-title">
+    <div>
+      <h1>Ordering</h1>
+    </div>
+  </div>
+  <div class="ordering">
+    <div class="ordering-data">
+      <div class="ordering-data-address">
+        <div class="ordering-data-address-title">Delivery address</div>
+        <ng-container *ngIf="isAddress; else addAddress">
+          <div class="ordering-data-address-info">
+            <div>
+              <div>{{ deliveryAddress?.address }}</div>
+              <div>{{ deliveryAddress?.country }}, {{ deliveryAddress?.city }}, {{ deliveryAddress?.zip }}</div>
+            </div>
+            <div
+              class="ordering-data-address-change-button"
+              (click)="openChangeAddress()">Change address
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #addAddress>
+          <div
+            class="ordering-add-address"
+            (click)="openChangeAddress()">Add address
+          </div>
+        </ng-template>
+      </div>
+      <div class="ordering-data-card">
+        <div class="ordering-data-card-title">Payment card</div>
+        <ng-container *ngIf="isCard; else addCard">
+          <div class="ordering-data-card-info">
+            <div>&bull;&bull;&bull;&bull; {{ paymentCard?.cardNumber.toString() | slice:12 }} {{ paymentCard?.cardMonth }}
+              /{{ paymentCard?.cardYear }}</div>
+            <div
+              class="ordering-data-card-change-button"
+              (click)="openChangeCard()">Change card
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #addCard>
+          <div
+            class="ordering-add-card"
+            (click)="openChangeCard()">Add card
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="ordering-buy">
+      <div class="ordering-buy-title">SUMMARY</div>
+      <hr>
+      <div
+        class="ordering-buy-product"
+        *ngFor="let product of basketProducts">
+        <div class="ordering-buy-product-name">{{ product?.name }}:</div>
+        <div class="ordering-buy-product-price">{{ product?.price | currency: '$' }}</div>
+      </div>
+      <hr>
+      <div class="ordering-buy-total">
+        <div class="ordering-buy-total-title">TOTAL:</div>
+        <div class="ordering-buy-total-price">{{ totalPrice | currency: '$' }}</div>
+      </div>
+      <div class="ordering-buy-button">
+        <button
+          [disabled]="!isAddress || !isCard"
+          [ngClass]="{'no-address-card': !isAddress || !isCard}"
+          (click)="buy()">BUY
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

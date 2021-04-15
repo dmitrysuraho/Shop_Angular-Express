@@ -1,0 +1,124 @@
+<div
+  class="header"
+  [ngClass]="{'shadow': isShadow}">
+  <ng-container *ngIf="isPopup">
+    <div class="header-popup"></div>
+  </ng-container>
+  <div class="header-logo-nav">
+    <div class="header-logo">
+      <a
+        [routerLink]="Routing.MAIN"
+        (click)="toUpPage()">
+        <img
+          class="header-logo-svg"
+          src="assets/images/logo.png"/>
+      </a>
+    </div>
+    <div class="header-menu">
+      <img
+        src="assets/images/menu.svg"
+        (click)="showMenu()"/>
+    </div>
+    <div
+      class="header-nav"
+      [ngClass]="{'display':isNavMenu}">
+      <div class="header-nav-close">
+        <img
+          width="15px"
+          height="15px"
+          (click)="closeMenu()"
+          src="assets/images/delete.svg"/>
+      </div>
+      <ul>
+        <li class="header-shop">
+          <a
+            class="header-shop-title"
+            [routerLink]='Routing.SHOP'
+            (click)="isMenu()">Shop
+            <img
+              class="header-arrow-svg"
+              src="assets/images/arrow-down.svg"/>
+          </a>
+          <ul
+            class="header-submenu"
+            [ngClass]="{'open-sub-menu': isSubNavMenu}">
+            <div class="header-clothing">
+              <div class="header-category-clothing">Clothing</div>
+              <div *ngFor="let cl of clothing$ | async">
+                <a
+                  [routerLink]='Routing.SHOP'
+                  [queryParams]="{'type': 'clothing', 'category': cl.category | lowercase}"
+                  (click)="toUpPage()">{{ cl.category }}</a>
+              </div>
+            </div>
+            <div class="header-shoes">
+              <div>Shoes</div>
+              <div *ngFor="let sh of shoes$ | async">
+                <a
+                  [routerLink]='Routing.SHOP'
+                  [queryParams]="{'type': 'shoes', 'category': sh.category | lowercase}"
+                  (click)="toUpPage()">{{ sh.category }}</a>
+              </div>
+            </div>
+            <div class="header-accessories">
+              <div class="header-category-accessories">Accessories</div>
+              <div *ngFor="let acc of accessories$ | async">
+                <a
+                  [routerLink]="Routing.SHOP"
+                  [queryParams]="{'type': 'accessories', 'category': acc.category | lowercase}"
+                  (click)="toUpPage()">{{ acc.category }}</a>
+              </div>
+            </div>
+            <div class="header-img-category">
+              <img src="assets/images/category.jpg"/>
+            </div>
+          </ul>
+        </li>
+        <li class="header-contact">
+          <a
+            [routerLink]="Routing.CONTACT"
+            (click)="toUpPage()">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="header-elements">
+    <div class="header-search">
+      <form
+        [formGroup]="searchForm"
+        (ngSubmit)="search(searchInput.value)">
+        <button type="button">
+          <img
+            (click)="search(searchInput.value)"
+            src="assets/images/search.svg"/>
+        </button>
+        <input
+          #searchInput
+          class="header-input-search"
+          formControlName="search"
+          type="search"
+          placeholder="Type for search"/>
+      </form>
+    </div>
+    <div class="header-user">
+      <a
+        [routerLink]="Routing.PERSONAL_DATA"
+        (click)="toUpPage()">
+        <img
+          class="header-user-svg"
+          src="assets/images/user.svg"/>
+      </a>
+    </div>
+    <div
+      class="header-basket"
+      [routerLink]="Routing.BASKET"
+      (click)="toUpPage()">
+      <a>
+        <img
+          class="header-basket-svg"
+          src="assets/images/basket.svg"/>
+      </a>
+      <div class="header-product-count">{{ basketProductsLength }}</div>
+    </div>
+  </div>
+</div>

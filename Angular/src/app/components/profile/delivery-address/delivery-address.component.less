@@ -1,0 +1,112 @@
+input {
+  border: none;
+  outline: none;
+}
+
+.address {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 1070px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 540px) {
+    width: 300px;
+    padding: 5px;
+  }
+
+  .address-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .address-successfully-saved {
+      font-weight: bold;
+      color: red;
+    }
+
+    .address-form-group {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 300px;
+
+      label {
+        color: dimgray;
+      }
+
+      &:last-of-type {
+        margin-top: 10px;
+        flex-direction: row;
+        align-items: center;
+        height: 30px;
+
+        button {
+          height: 100%;
+          width: 110px;
+          color: white;
+          background-color: #0315FF;
+          border: none;
+          outline: none;
+          transition: background-color 0.3s ease-in-out;
+          font-size: 15px;
+
+          &:hover {
+            background-color: #DC0345;
+            cursor: pointer;
+          }
+        }
+
+        a {
+          font-size: 15px;
+          margin-left: 10px;
+          font-weight: bold;
+          transition: color 0.3s ease-in-out;
+
+          &:hover {
+            cursor: pointer;
+            color: #0315FF;
+          }
+        }
+      }
+
+      input {
+        height: 35px;
+        font-size: 17px;
+        border: 1px solid gray;
+        transition: border-bottom-color, color 0.3s ease-in-out;
+
+        &:focus {
+          border: 1px solid #0315FF;
+          color: #0315FF;
+        }
+      }
+
+      .address-error {
+        height: 20px;
+        .address-error-field {
+          color: #DC0345;
+          word-wrap: normal;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+/////////
+
+.error-red-border {
+  border: solid 1px #DC0345 !important;
+  color: #DC0345 !important;
+}
+
+.address-disable-button {
+  background-color: gray !important;
+}

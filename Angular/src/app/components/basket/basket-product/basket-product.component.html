@@ -1,0 +1,25 @@
+<div class="basket-product">
+  <div class="basket-product-img">
+    <img
+      width="100%"
+      height="100%"
+      [src]="urlPicture"/>
+  </div>
+  <div class="basket-product-info">
+    <div class="basket-product-brand">{{ product?.brand | uppercase }}</div>
+    <div class="basket-product-name">{{ product?.name }}</div>
+    <div class="basket-product-price">{{ product?.price | currency: '$' }}</div>
+  </div>
+  <div class="basket-product-delete">
+    <img
+      width="100%"
+      height="100%"
+      (click)="deleteProductFromCart()"
+      src="assets/images/delete.svg"/>
+  </div>
+  <div
+    class="basket-product-cover-bg"
+    [routerLink]="Routing.DETAILS"
+    [queryParams]="{'product': product?.id}"
+    (click)="toUpPage()"></div>
+</div>

@@ -1,0 +1,30 @@
+<div class="address">
+  <form
+    class="address-form"
+    [formGroup]="addressForm"
+    (ngSubmit)="saveAddress()">
+    <div class="address-form-group"
+         *ngFor="let input of inputs">
+      <label>{{ input.field }}</label>
+      <input
+        (input)="changeInput(input.formControl)"
+        [ngClass]="{'error-red-border': addressForm.controls[input.formControl]?.invalid && addressForm.controls[input.formControl]?.touched}"
+        [type]="input.type"
+        [formControlName]="input.formControl"/>
+      <div class="address-error">
+        <ng-container *ngIf="addressForm.controls[input.formControl]?.invalid && addressForm.controls[input.formControl]?.touched">
+          <div class="address-error-field">{{ errorFields.get(input.formControl) }}</div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="isSaved">
+      <div class="address-successfully-saved">Successfully saved</div>
+    </ng-container>
+    <div class="address-form-group">
+      <button
+        [disabled]="addressForm?.invalid || !isChangeInput"
+        [ngClass]="{'address-disable-button': addressForm?.invalid || !isChangeInput}">Save changes
+      </button>
+    </div>
+  </form>
+</div>

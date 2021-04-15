@@ -1,0 +1,15 @@
+<div class="history-order">
+  <div class="history-order-date-total">
+    <div>Date: {{ order.date | date }}</div>
+    <div>Total price: <span class="history-order-total-price">{{ totalPrice | currency: '$' }}</span></div>
+  </div>
+  <hr>
+  <div class="history-order-products">
+    <div
+      class="history-order-product"
+      *ngFor="let product of products$ | async">
+      <div class="history-order-product-name">{{ product.name }}:</div>
+      <div class="history-order-product-price">{{ product.price | currency: '$' }}</div>
+    </div>
+  </div>
+</div>

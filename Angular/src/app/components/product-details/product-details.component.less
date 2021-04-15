@@ -1,0 +1,120 @@
+.media(@size) {
+  @media screen and (max-width: 555px) {
+    font-size: @size;
+  }
+}
+select {
+  padding: 10px;
+  outline: none;
+  color: gray;
+  border: 1px solid gray;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.product-details {
+  margin-top: 80px;
+  min-height: 95vh;
+  display: flex;
+  @media screen and (max-width: 1010px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product-details-img {
+    width: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media screen and (max-width: 1300px) {
+      width: 450px;
+      background-position: center;
+    }
+    @media screen and (max-width: 1010px) {
+      background-position: unset;
+      height: 600px;
+      margin-top: 20px;
+    }
+    @media screen and (max-width: 555px) {
+      width: 270px;
+      height: 400px;
+    }
+  }
+  .product-details-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px 0 50px 0;
+    //padding: 0 20px 0 20px;
+    font-size: 20px;
+    word-wrap: break-word;
+    text-wrap: revert;
+    width: 100%;
+    .media(15px);
+    @media screen and (max-width: 555px) {
+      margin: 20px 0 20px 0;
+      justify-content: normal;
+    }
+    .product-details-brand {
+      color: gray;
+      margin: 0 20px;
+    }
+    .product-details-name {
+      font-weight: bold;
+      font-size: 30px;
+      word-wrap: break-word;
+      margin: 0 20px;
+      .media(20px);
+    }
+    .product-details-price {
+      color: red;
+      font-weight: bold;
+      font-size: 30px;
+      margin: 0 20px;
+      .media(20px);
+    }
+    .product-details-description {
+      color: darkgray;
+      margin: 0 20px;
+    }
+    .product-details-size-color {
+      display: flex;
+      margin: 20px 0;
+      .product-details-size {
+      }
+      .product-details-color {
+        margin-left: 20px;
+      }
+    }
+    .product-details-button {
+      display: flex;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0315FF;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        text-align: center;
+        height: 40px;
+        width: 130px;
+        margin: 0 20px;
+        transition: background-color 0.3s ease-in-out;
+        &:hover {
+          cursor: pointer;
+          background-color: #DC0345;
+        }
+      }
+    }
+  }
+}
+
+////////////
+
+.product-color-red {
+  color: red;
+}
+
+.red-back-ground-button {
+  background-color: #DC0345 !important;
+}

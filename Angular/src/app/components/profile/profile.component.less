@@ -1,0 +1,108 @@
+.styles-category() {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+  }
+}
+
+.profile-title {
+  background-image: url("src/assets/images/shop-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 140px;
+  margin-top: 80px;
+  margin-bottom: 10px;
+
+  div {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.profile {
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+  }
+
+  .profile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 210px;
+    padding: 0 0 10px 0;
+    margin-right: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    @media screen and (max-width: 900px) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    .profile-menu-personal {
+      .styles-category();
+    }
+
+    .profile-menu-address {
+      .styles-category();
+    }
+
+    .profile-menu-card {
+      .styles-category();
+    }
+
+    .profile-menu-history {
+      .styles-category();
+    }
+
+    .profile-logout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 30px;
+      margin-top: 10px;
+      color: white;
+      background-color: #0315FF;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #DC0345;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+////////
+
+.bg-color {
+  background-color: rgba(128, 128, 128, 0.1);
+}

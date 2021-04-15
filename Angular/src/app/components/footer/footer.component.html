@@ -1,0 +1,53 @@
+<div class="footer">
+  <ng-container *ngIf="isPopup">
+    <div class="footer-popup"></div>
+  </ng-container>
+  <div class="footer-logos-nav">
+    <div class="footer-nav">
+      <a
+        [routerLink]="Routing.MAIN"
+        (click)="toUpPage()">
+        <img src="assets/images/logo2.png"/>
+      </a>
+      <a
+        [routerLink]="Routing.SHOP"
+        (click)="toUpPage()">Shop</a>
+      <a
+        [routerLink]="Routing.CONTACT"
+        (click)="toUpPage()">Contact</a>
+    </div>
+    <div class="footer-logos">
+      <a>
+        <img
+          width="20px"
+          height="20px"
+          title="facebook"
+          src="assets/images/facebook-logo.svg"/>
+      </a>
+      <a>
+        <img
+          width="20px"
+          height="20px"
+          title="instagram"
+          src="assets/images/instagram-logo.svg"/>
+      </a>
+      <a>
+        <img
+          width="20px"
+          height="20px"
+          title="twitter"
+          src="assets/images/twitter-logo.svg"/>
+      </a>
+      <a>
+        <img
+          width="20px"
+          height="20px"
+          title="youtube"
+          src="assets/images/youtube-logo.svg"/>
+      </a>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    Copyright ©2020 All rights reserved | This template is made by Dmitry
+  </div>
+</div>
