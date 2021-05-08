@@ -3,9 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  ws: 'ws://localhost:6759'
-  //ws: Routing.DOMAIN.replace(/^http/, 'ws') - for deploy
+  production: true
 };
 
 /*

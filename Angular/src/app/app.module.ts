@@ -31,7 +31,7 @@ import {WebsocketModule} from "./services/websocket/websocket.module";
     HeaderModule,
     FooterModule,
     WebsocketModule.config({
-      url: environment.ws
+      url: 'ws://localhost:6759' //Routing.DOMAIN.replace(/^http/, 'ws') - for deploy
     })
   ],
   providers: [
