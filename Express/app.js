@@ -1,4 +1,5 @@
 const express = require('express');
+const WebSocketServer = require('ws').Server;
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -18,7 +19,7 @@ const port = process.env.PORT || 3000;
 
 associations();
 app.use(passport.initialize());
-app.use('/static', express.static(__dirname + "/static"));
+app.use('/static', express.static(__dirname + '/static'));
 app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -38,30 +39,27 @@ app.use('/api/orders', ordersRouter);
 
 sequelize.sync()
     .then(() => {
-        app.listen(port, () => console.log(`Server has been started on ${port}!`))
+        const server = app.listen(port, () => console.log(`Server has been started on ${port}!`));
+        const wss = new WebSocketServer({ port: 6759 /*{server} - for deploy*/ });
+        wss.on('connection', (ws) => {
+            console.log('WebSocket connection');
+            ws.on('message', (event) => {
+                const data = JSON.parse(event);
+                const res = JSON.parse(data);
+                switch (res.event) {
+                    case 'add-product':
+                        ws.send(JSON.stringify({
+                            event: 'messages',
+                            data: true
+                        }));
+                        break;
+                    case '':
+                        break;
+                }
+            });
+            ws.on('close', () => {
+                console.log('WebSocket disconnected');
+            });
+        });
     })
     .catch(error => console.log(error));
-
-const WebSocketServer = require('ws').Server;
-const wss = new WebSocketServer({ port: 6759 });
-
-wss.on('connection', (ws) => {
-    console.log('WebSocket connection');
-    ws.on('message', (event) => {
-        const data = JSON.parse(event);
-        const res = JSON.parse(data);
-        switch (res.event) {
-            case 'add-product':
-                ws.send(JSON.stringify({
-                    event: 'messages',
-                    data: true
-                }));
-                break;
-            case '':
-                break;
-        }
-    });
-    ws.on('close', () => {
-        console.log('WebSocket disconnected');
-    });
-});

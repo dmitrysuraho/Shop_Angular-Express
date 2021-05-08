@@ -1,5 +1,5 @@
 export enum Routing {
-  DOMAIN = 'http://localhost:3000',
+  DOMAIN = 'http://localhost:3000', // https://pacific-dusk-77245.herokuapp.com/ - for deploy
   MAIN = '/main',
   SHOP = '/shop',
   CONTACT = '/contact',
