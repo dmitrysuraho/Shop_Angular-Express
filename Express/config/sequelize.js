@@ -6,7 +6,7 @@ module.exports = new Sequelize('sql11404195', 'sql11404195', '64QPbpQ3GB', {
         timestamps: false
     },
     pool: {
-        max: 5,
+        max: 10,
         min: 0,
         idle: 10000
     }

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const Baskets = require('../models/baskets.model');
 const Products = require('../models/products.model');
 
-module.exports.getBasketProducts = async (req, res) => {
+module.exports.getBasketProducts = async (req, res, next) => {
     try {
         const basketProducts = await Products.findAll({
             include: [{

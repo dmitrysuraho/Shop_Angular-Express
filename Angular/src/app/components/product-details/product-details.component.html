@@ -1,4 +1,10 @@
 <div class="product-details">
+  <ng-container *ngIf="isAddProduct">
+    <div class="product-details-notification">
+      <app-notification titleNotification="Product is added to your basket"
+                        (onCloseNotification)="closeNotification()"></app-notification>
+    </div>
+  </ng-container>
   <div
     class="product-details-img"
     [style.background-image]="urlPicture?'url(' + urlPicture + ')':'none'"></div>

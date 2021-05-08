@@ -17,6 +17,8 @@ import {UserService} from './services/user.service';
 import {ValidationErrorsService} from './services/validation-errors.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./services/token.interceptor";
+import {WebsocketService} from "./services/websocket/websocket.service";
+import {WebsocketModule} from "./services/websocket/websocket.module";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import {TokenInterceptor} from "./services/token.interceptor";
     AppRoutingModule,
     HttpClientModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    WebsocketModule.config({
+      url: environment.ws
+    })
   ],
   providers: [
     AuthGuard,
@@ -40,6 +45,7 @@ import {TokenInterceptor} from "./services/token.interceptor";
     SharedService,
     UserService,
     ValidationErrorsService,
+    WebsocketService,
     {
       provide: HTTP_INTERCEPTORS,
       multi: true,

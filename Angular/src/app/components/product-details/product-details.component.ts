@@ -2,12 +2,19 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductsService} from '../../services/products.service';
 import {Product} from '../../models/product';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {of, Subscription} from 'rxjs';
+import {Observable, of, Subscription} from 'rxjs';
 import {ViewportScroller} from '@angular/common';
 import {SharedService} from '../../services/shared.service';
 import {BasketService} from '../../services/basket.service';
 import {Routing} from '../../import-data/routing.enum';
 import {switchMap, tap} from 'rxjs/operators';
+import {WebsocketService} from "../../services/websocket/websocket.service";
+import {WS} from "../../services/websocket/websocket.events";
+
+export interface IMessage {
+  id: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-product-details',
@@ -25,13 +32,16 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   public button: string;
 
+  public isAddProduct: boolean;
+
   constructor(
     private productsService: ProductsService,
     private activateRoute: ActivatedRoute,
     private viewportScroller: ViewportScroller,
     private router: Router,
     private sharedService: SharedService,
-    private basketService: BasketService) {
+    private basketService: BasketService,
+    private wsService: WebsocketService) {
   }
 
   public ngOnInit(): void {
@@ -67,6 +77,11 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       .subscribe(() => {}, () => {
         this.router.navigate(['/main']);
       }));
+
+    this.wsService.on<IMessage[]>(WS.ON.MESSAGES)
+      .subscribe(message => {
+        this.isAddProduct = !!message;
+      });
   }
 
   public addToCart(): void {
@@ -76,10 +91,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
           .pipe(
             switchMap(() => {
               this.button = 'ADDED';
+              this.wsService.send(WS.SEND.ADD_PRODUCT, 'add product');
+              this.viewportScroller.scrollToPosition([0, 0]);
               return this.basketService.getBasketProductsCount()
                 .pipe(
                   tap((basketProductCount: {count: number}) =>
-                    this.sharedService.basketProductsLength$.next(basketProductCount.count))
+                    this.sharedService.basketProductsLength$.next(basketProductCount.count)
+                  )
                 )
             })
           ).subscribe());
@@ -89,6 +107,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       this.router.navigate(['/authorization']);
       this.viewportScroller.scrollToPosition([0, 0]);
     }
+  }
+
+  public closeNotification(): void {
+    this.isAddProduct = false;
   }
 
   public ngOnDestroy(): void {
